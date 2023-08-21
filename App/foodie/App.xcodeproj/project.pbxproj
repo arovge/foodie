@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		659ABFF12A4BD73D00A0837B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659ABFF02A4BD73D00A0837B /* App.swift */; };
 		659ABFF32A4BD73D00A0837B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659ABFF22A4BD73D00A0837B /* Item.swift */; };
-		659ABFF52A4BD73D00A0837B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659ABFF42A4BD73D00A0837B /* ContentView.swift */; };
 		659ABFF72A4BD73D00A0837B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 659ABFF62A4BD73D00A0837B /* Assets.xcassets */; };
 		659ABFFB2A4BD73D00A0837B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 659ABFFA2A4BD73D00A0837B /* Preview Assets.xcassets */; };
 		659AC0062A4BD73D00A0837B /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AC0052A4BD73D00A0837B /* UnitTests.swift */; };
@@ -39,7 +38,6 @@
 		659ABFED2A4BD73D00A0837B /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		659ABFF02A4BD73D00A0837B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		659ABFF22A4BD73D00A0837B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		659ABFF42A4BD73D00A0837B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		659ABFF62A4BD73D00A0837B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		659ABFF82A4BD73D00A0837B /* foodie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = foodie.entitlements; sourceTree = "<group>"; };
 		659ABFFA2A4BD73D00A0837B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 			children = (
 				659ABFF02A4BD73D00A0837B /* App.swift */,
 				659ABFF22A4BD73D00A0837B /* Item.swift */,
-				659ABFF42A4BD73D00A0837B /* ContentView.swift */,
 				659ABFF62A4BD73D00A0837B /* Assets.xcassets */,
 				659ABFF82A4BD73D00A0837B /* foodie.entitlements */,
 				659ABFFC2A4BD73D00A0837B /* Info.plist */,
@@ -279,7 +276,6 @@
 			files = (
 				659ABFF32A4BD73D00A0837B /* Item.swift in Sources */,
 				659ABFF12A4BD73D00A0837B /* App.swift in Sources */,
-				659ABFF52A4BD73D00A0837B /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +439,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = foodie/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Foodie;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -481,6 +478,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = foodie/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Foodie;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
