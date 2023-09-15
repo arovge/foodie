@@ -2,15 +2,13 @@ import SwiftUI
 import SwiftData
 import FoodieModels
 
-
 public struct RootView: View {
     @State var navigator = Navigator()
     
     public init() {}
     
     public var body: some View {
-        @Bindable var nav = navigator
-        NavigationStack(path: $nav.path) {
+        NavigationStack(path: $navigator.path) {
             ProgressView()
                 .navigationDestination(for: Route.self) { route in
                     switch route {
@@ -26,11 +24,12 @@ public struct RootView: View {
                             .environment(navigator)
                     case .splash:
                         ProgressView()
-                    case .foodEditor:
-                        FoodEditor()
+                    case .foodEditor(let food):
+                        FoodEditor(existingFood: food)
                             .environment(navigator)
                     }
                 }
         }
+        .modelContainer(for: Food.self)
     }
 }
