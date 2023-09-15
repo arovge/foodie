@@ -6,7 +6,15 @@ struct NutrientsProgress: View {
     
     var body: some View {
         Section("Nutrients") {
-            NutrientProgressBar(.sodium, value: currentSodium)
+            ForEach(Nutrient.allCases) { nutrient in
+                NutrientProgressBar(nutrient, value: value(for: nutrient))
+            }
+        }
+    }
+    
+    func value(for nutrient: Nutrient) -> Measurement<UnitMass> {
+        switch nutrient {
+        case .sodium: currentSodium
         }
     }
     
