@@ -1,12 +1,12 @@
 // More information found at:
 // https://www.medicalnewstoday.com/articles/319731#calculating-how-many-calories-are-burned-in-a-day
 
-public enum ActivityLevel {
-    case barelyActive
-    case slightlyActive
-    case moderativelyActive
-    case veryActive
-    case extraActive
+public enum ActivityLevel: Int, CaseIterable {
+    case barelyActive = 1
+    case slightlyActive = 2
+    case moderativelyActive = 3
+    case veryActive = 4
+    case extraActive = 5
     
     var description: String {
         switch self {

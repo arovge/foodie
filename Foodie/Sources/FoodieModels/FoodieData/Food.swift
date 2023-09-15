@@ -1,4 +1,5 @@
 import SwiftData
+import Foundation
 
 @Model
 final public class Food: Hashable {
@@ -17,39 +18,37 @@ final public class Food: Hashable {
     }
 }
 
-// TODO: Either add mg/g to property names or do some type shennanigans instead of using Double everywhere
-// Or use Measurement!
 struct NutritionLabel {
     public let name: String
     public let calories: Double
     public let fat: Fats
-    public let cholesterol: Double
-    public let sodium: Double
+    public let cholesterol: Measurement<UnitMass>
+    public let sodium: Measurement<UnitMass>
     public let carbs: Carbs
     public let sugars: Sugars
-    public let protein: Double
+    public let protein: Measurement<UnitMass>
     public let vitamins: Vitamins
 }
 
 struct Fats {
-    public let total: Double
-    public let saturated: Double
-    public let trans: Double
+    public let total: Measurement<UnitMass>
+    public let saturated: Measurement<UnitMass>
+    public let trans: Measurement<UnitMass>
 }
 
 struct Carbs {
-    public let total: Double
-    public let fiber: Double
+    public let total: Measurement<UnitMass>
+    public let fiber: Measurement<UnitMass>
 }
 
 struct Sugars {
-    public let total: Double
-    public let added: Double
+    public let total: Measurement<UnitMass>
+    public let added: Measurement<UnitMass>
 }
 
 struct Vitamins {
-    public let d: Double
-    public let calcium: Double
-    public let iron: Double
-    public let potassium: Double
+    public let d: Measurement<UnitMass>
+    public let calcium: Measurement<UnitMass>
+    public let iron: Measurement<UnitMass>
+    public let potassium: Measurement<UnitMass>
 }

@@ -1,42 +1,42 @@
 import SwiftUI
 import SwiftData
+import FoodieModels
+import FoodieServices
 
 struct SettingsView: View {
     @Environment(Navigator.self) var navigator: Navigator
-    @AppStorage("userHeight") var userHeight: Double = 0
-    @AppStorage("userWeight") var userWeight: Double = 0
+    
+    // TODO: Move this to `Measurement` ex: `Measurement(value: 1230, unit: UnitLength.meters)`
+    // TOOD: Look at creating an @AppStorage wrapper that takes a `UserDefaultsKey` enum
+    @AppStorage(UserDefaultsKey.height.rawValue) var height: Double = 0
+    @AppStorage(UserDefaultsKey.weight.rawValue) var weight: Double = 0
+    @AppStorage(UserDefaultsKey.age.rawValue) var age: Int = 0
+    @AppStorage(UserDefaultsKey.sex.rawValue) var sex: Int = -1
     
     var body: some View {
         Form {
-            VStack(alignment: .leading) {
-                LabeledContent("Height (cm)") {
-                    TextField("Height (cm)", text: height)
+            Section("Height (cm)") {
+                TextField("Height (cm)", text: $height.str())
+            }
+            Section("Weight (kg)") {
+                TextField("Weight (kg)", text: $weight.str())
+            }
+            Section("Age (years)") {
+                TextField("Age (years)", text: $age.str())
+            }
+            Section("Sex") {
+                Picker("Sex", selection: $sex) {
+                    ForEach(Sex.allCases) {
+                        Text($0.description)
+                            .tag($0.rawValue)
+                    }
                 }
-                LabeledContent("Weight (kg)") {
-                    TextField("Weight", text: weight)
+                if sex == Sex.other.rawValue {
+                    Text("Other will use the same values as 'Female' for calculating your daily recommended calories")
                 }
-                
             }
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
-    }
-    
-    var height: Binding<String> {
-        .init(get: {
-            if userHeight == 0 { return "" }
-            return userHeight.description
-        }, set: {
-            userHeight = Double($0) ?? 0
-        })
-    }
-    
-    var weight: Binding<String> {
-        .init(get: {
-            if userWeight == 0 { return "" }
-            return userWeight.description
-        }, set: {
-            userWeight = Double($0) ?? 0
-        })
     }
 }
