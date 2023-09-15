@@ -17,4 +17,5 @@ public enum UserDefaultsKey: String {
     case weight
     case age
     case sex
+    case activityLevel
 }

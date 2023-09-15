@@ -10,6 +10,7 @@ struct DashboardView: View {
     @AppStorage(UserDefaultsKey.weight.rawValue) var weightKg: Double = 0
     @AppStorage(UserDefaultsKey.sex.rawValue) var sex: Int = -1
     @AppStorage(UserDefaultsKey.age.rawValue) var age: Int = 0
+    @AppStorage(UserDefaultsKey.activityLevel.rawValue) var activityLevel: Int = -1
     @Query private var items: [Food]
     let calorieService = CalorieService()
     
@@ -93,13 +94,14 @@ struct DashboardView: View {
     var estimatedDailyCalories: Double? {
         guard let sex = Sex(rawValue: sex) else { return nil }
         guard age > 0 else { return nil }
+        guard let level = ActivityLevel(rawValue: activityLevel) else { return nil }
 
         return calorieService.estimateDailyCalories(
             heightCm: heightCm,
             weightKg: weightKg,
             age: age,
             sex: sex,
-            activityLevel: .moderativelyActive
+            activityLevel: level
         )
     }
     

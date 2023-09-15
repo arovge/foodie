@@ -12,6 +12,7 @@ struct SettingsView: View {
     @AppStorage(UserDefaultsKey.weight.rawValue) var weight: Double = 0
     @AppStorage(UserDefaultsKey.age.rawValue) var age: Int = 0
     @AppStorage(UserDefaultsKey.sex.rawValue) var sex: Int = -1
+    @AppStorage(UserDefaultsKey.activityLevel.rawValue) var activityLevel: Int = -1
     
     var body: some View {
         Form {
@@ -33,6 +34,17 @@ struct SettingsView: View {
                 }
                 if sex == Sex.other.rawValue {
                     Text("Other will use the same values as 'Female' for calculating your daily recommended calories")
+                }
+            }
+            Section("Activity Level") {
+                Picker("Activity Level", selection: $activityLevel) {
+                    ForEach(ActivityLevel.allCases) {
+                        Text($0.label)
+                            .tag($0.rawValue)
+                    }
+                }
+                if let level = ActivityLevel(rawValue: activityLevel) {
+                    Text(level.description)
                 }
             }
         }
