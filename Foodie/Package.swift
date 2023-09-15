@@ -19,6 +19,9 @@ let package = Package(
         .library(
             name: "FoodieServices",
             targets: ["FoodieServices"]),
+        .library(
+            name: "FoodieNetworking",
+            targets: ["FoodieNetworking"]),
     ],
     dependencies: [
         
@@ -33,6 +36,9 @@ let package = Package(
             name: "FoodieModels"),
         .target(
             name: "FoodieServices",
+            dependencies: ["FoodieModels", "FoodieNetworking"]),
+        .target(
+            name: "FoodieNetworking",
             dependencies: ["FoodieModels"]),
         .testTarget(
             name: "MyLibraryTests",
