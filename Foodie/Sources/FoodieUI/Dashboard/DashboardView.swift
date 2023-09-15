@@ -93,12 +93,11 @@ struct DashboardView: View {
     
     var estimatedDailyCalories: Double? {
         guard let sex = Sex(rawValue: sex) else { return nil }
-        guard age > 0 else { return nil }
         guard let level = ActivityLevel(rawValue: activityLevel) else { return nil }
 
         return calorieService.estimateDailyCalories(
-            heightCm: heightCm,
-            weightKg: weightKg,
+            height: Measurement(value: heightCm, unit: .centimeters),
+            weight: Measurement(value: weightKg, unit: .kilograms),
             age: age,
             sex: sex,
             activityLevel: level
