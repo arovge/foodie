@@ -4,9 +4,10 @@ import FoodieServices
 
 @Observable
 class UserFormViewModel {
-    private let userDefaultsService = UserDefaultsService()
-    public var height = 0
-    public var weight = 0
+    private let userService = UserService()
+    
+    public var height = 0.0
+    public var weight = 0.0
     public var age = 0
     public var sex = Sex.female
     public var activityLevel = ActivityLevel.moderativelyActive
@@ -15,16 +16,22 @@ class UserFormViewModel {
     init() {}
     
     func handleAppear() {
-        height = userDefaultsService.get(.height) ?? 0
-        weight = userDefaultsService.get(.weight) ?? 0
-        age = userDefaultsService.get(.age) ?? 0
-        let sexValue: Int? = userDefaultsService.get(.sex)
-        if let sexValue, let existingSex = Sex(rawValue: sexValue) {
-            sex = existingSex
+        let fields = userService.getUserFields()
+        
+        if let value = fields.height {
+            height = value
         }
-        let activityLevelValue: Int? = userDefaultsService.get(.activityLevel)
-        if let activityLevelValue, let existingActivityLevel = ActivityLevel(rawValue: activityLevelValue) {
-            activityLevel = existingActivityLevel
+        if let value = fields.weight {
+            weight = value
+        }
+        if let value = fields.age {
+            age = value
+        }
+        if let value = fields.sex {
+            sex = value
+        }
+        if let value = fields.activityLevel {
+            activityLevel = value
         }
     }
     
@@ -34,12 +41,6 @@ class UserFormViewModel {
             return
         }
         
-        userDefaultsService.set(.weight, value: weight)
-        userDefaultsService.set(.height, value: height)
-        userDefaultsService.set(.age, value: age)
-        userDefaultsService.set(.sex, value: sex.rawValue)
-        userDefaultsService.set(.activityLevel, value: activityLevel.rawValue)
-        
         let user = User(
             height: .init(value: Double(height), unit: .centimeters),
             weight: .init(value: Double(weight), unit: .kilograms),
@@ -47,6 +48,7 @@ class UserFormViewModel {
             sex: sex,
             activityLevel: activityLevel
         )
+        userService.save(user)
         navigator.replaceAll(.dashboard(user))
     }
 }

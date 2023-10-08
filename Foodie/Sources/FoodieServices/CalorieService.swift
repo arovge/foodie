@@ -2,7 +2,7 @@ import FoodieModels
 import Foundation
 
 public class CalorieService {
-
+    
     public init() {}
     
     public static func dailyRecommendedMass(for nutrient: Nutrient, user: User) -> Measurement<UnitMass> {

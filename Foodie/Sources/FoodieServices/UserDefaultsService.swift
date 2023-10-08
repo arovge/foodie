@@ -1,6 +1,7 @@
 import Foundation
 
 public class UserDefaultsService {
+    
     public init() {}
     
     public func get<T: Decodable>(_ key: UserDefaultsKey) -> T? {
