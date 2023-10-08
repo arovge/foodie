@@ -6,12 +6,12 @@ import FoodieServices
 class UserFormViewModel {
     private let userService = UserService()
     
-    public var height = 0.0
-    public var weight = 0.0
-    public var age = 0
-    public var sex = Sex.female
-    public var activityLevel = ActivityLevel.moderativelyActive
-    public var showAlert = false
+    var height = 0.0
+    var weight = 0.0
+    var age = 0
+    var sex = Sex.female
+    var activityLevel = ActivityLevel.moderativelyActive
+    var showAlert = false
     
     init() {}
     
@@ -36,7 +36,7 @@ class UserFormViewModel {
     }
     
     func submit(_ navigator: Navigator) {
-        guard weight > 0 && height > 0 && age > 0 else {
+        guard height > 0 && weight > 0 && age > 0 else {
             showAlert = true
             return
         }

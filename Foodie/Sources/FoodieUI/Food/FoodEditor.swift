@@ -3,9 +3,18 @@ import SwiftData
 import FoodieModels
 import SwiftData
 
+private enum Field: Hashable {
+    case name
+    case calories
+    case protein
+    case sugar
+    case carbs
+}
+
 struct FoodEditor: View {
     @Environment(Navigator.self) var navigator: Navigator
     @Environment(\.modelContext) private var modelContext: ModelContext
+    @FocusState private var focusedField: Field?
     @State var name: String
     @State var calories: Double
     @State var protein: Double
@@ -26,18 +35,23 @@ struct FoodEditor: View {
         Form {
             Section("Food") {
                 TextField("Food", text: $name)
+                    .focused($focusedField, equals: .name)
             }
             Section("Calories") {
                 TextField("Calories", value: $calories, format: .number)
+                    .focused($focusedField, equals: .calories)
             }
             Section("Protein") {
                 TextField("Protein", value: $protein, format: .number)
+                    .focused($focusedField, equals: .protein)
             }
             Section("Sugar") {
                 TextField("Sugar", value: $sugar, format: .number)
+                    .focused($focusedField, equals: .sugar)
             }
             Section("Carbs") {
                 TextField("Carbs", value: $carbs, format: .number)
+                    .focused($focusedField, equals: .carbs)
             }
             Section {
                 Button(primaryActionText) {
