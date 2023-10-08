@@ -3,11 +3,11 @@ import Foundation
 
 @Model
 final public class Food: Hashable {
-    public let name: String
-    public let calories: Double
-    public let protein: Double
-    public let sugar: Double
-    public let carbs: Double
+    public var name: String
+    public var calories: Double
+    public var protein: Double
+    public var sugar: Double
+    public var carbs: Double
     
     public init(name: String, calories: Double, protein: Double, sugar: Double, carbs: Double) {
         self.name = name

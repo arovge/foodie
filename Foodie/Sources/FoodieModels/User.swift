@@ -14,12 +14,4 @@ public struct User: Hashable {
         self.sex = sex
         self.activityLevel = activityLevel
     }
-    
-    public static var dummy = User(
-        height: .init(value: 0, unit: .centimeters),
-        weight: .init(value: 0, unit: .kilograms),
-        age: 0,
-        sex: .female,
-        activityLevel: .moderativelyActive
-    )
 }

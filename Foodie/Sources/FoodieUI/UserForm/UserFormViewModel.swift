@@ -18,21 +18,11 @@ class UserFormViewModel {
     func handleAppear() {
         let fields = userService.getUserFields()
         
-        if let value = fields.height {
-            height = value
-        }
-        if let value = fields.weight {
-            weight = value
-        }
-        if let value = fields.age {
-            age = value
-        }
-        if let value = fields.sex {
-            sex = value
-        }
-        if let value = fields.activityLevel {
-            activityLevel = value
-        }
+        height = fields.height ?? height
+        weight = fields.weight ?? weight
+        age = fields.age ?? age
+        sex = fields.sex ?? sex
+        activityLevel = fields.activityLevel ?? activityLevel
     }
     
     func submit(_ navigator: Navigator) {

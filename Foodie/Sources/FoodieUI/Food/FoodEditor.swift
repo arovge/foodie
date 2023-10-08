@@ -54,17 +54,25 @@ struct FoodEditor: View {
                     .focused($focusedField, equals: .carbs)
             }
             Section {
-                Button(primaryActionText) {
-                    addFood()
-                }
-                .disabled(isFormInvalid)
-                
                 Button("Cancel", role: .destructive) {
                     navigator.pop()
+                }
+                if isEditing {
+                    Button("Delete", role: .destructive) {
+                        delete()
+                    }
                 }
             }
         }
         .navigationTitle(title)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(primaryActionText) {
+                    add()
+                }
+                .disabled(isFormInvalid)
+            }
+        }
     }
     
     var isEditing: Bool {
@@ -87,22 +95,35 @@ struct FoodEditor: View {
         }
     }
     
-    func addFood() {
+    func add() {
         guard !isFormInvalid else { return }
-
-        let food = Food(
-            name: name,
-            calories: calories,
-            protein: protein,
-            sugar: sugar,
-            carbs: carbs
-        )
         
-        // TODO: If existing object, we need to update the original fields on it and call modelContext.save()
         if let existingFood {
-            modelContext.delete(existingFood)
+            existingFood.name = name
+            existingFood.calories = calories
+            existingFood.protein = protein
+            existingFood.sugar = sugar
+            existingFood.carbs = carbs
+        } else {
+            let food = Food(
+                name: name,
+                calories: calories,
+                protein: protein,
+                sugar: sugar,
+                carbs: carbs
+            )
+            modelContext.insert(food)
         }
-        modelContext.insert(food)
+        
+        // TODO: Error handling
+        try! modelContext.save()
+
+        navigator.pop()
+    }
+    
+    func delete() {
+        guard let existingFood else { return }
+        modelContext.delete(existingFood)
         navigator.pop()
     }
     
