@@ -2,6 +2,8 @@ import SwiftUI
 
 struct SetupView: View {
     var body: some View {
-        Text("Setup")
+        UserForm()
+            .navigationTitle("Setup")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }

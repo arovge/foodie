@@ -1,4 +1,4 @@
-public enum Sex: Int, Identifiable, CaseIterable {
+public enum Sex: Int, Identifiable, CaseIterable, Hashable {
     case female = 1
     case male = 2
     case other = 3

@@ -28,16 +28,16 @@ struct FoodEditor: View {
                 TextField("Food", text: $name)
             }
             Section("Calories") {
-                TextField("Calories", text: $calories.str())
+                TextField("Calories", value: $calories, format: .number)
             }
             Section("Protein") {
-                TextField("Protein", text: $protein.str())
+                TextField("Protein", value: $protein, format: .number)
             }
             Section("Sugar") {
-                TextField("Sugar", text: $sugar.str())
+                TextField("Sugar", value: $sugar, format: .number)
             }
             Section("Carbs") {
-                TextField("Carbs", text: $carbs.str())
+                TextField("Carbs", value: $carbs, format: .number)
             }
             Section {
                 Button(primaryActionText) {

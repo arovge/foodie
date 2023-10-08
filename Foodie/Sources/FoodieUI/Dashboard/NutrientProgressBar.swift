@@ -5,10 +5,12 @@ import FoodieModels
 struct NutrientProgressBar: View {
     let nutrient: Nutrient
     let value: Measurement<UnitMass>
+    let user: User
     
-    init(_ nutrient: Nutrient, value: Measurement<UnitMass>) {
+    init(_ nutrient: Nutrient, value: Measurement<UnitMass>, user: User) {
         self.nutrient = nutrient
         self.value = value
+        self.user = user
     }
     
     var body: some View {
@@ -25,7 +27,7 @@ struct NutrientProgressBar: View {
     }
     
     var total: Measurement<UnitMass> {
-        CalorieService.dailyRecommended(nutrient)
+        CalorieService.dailyRecommendedMass(for: nutrient, user: user)
     }
     
     var formattedLabel: String {

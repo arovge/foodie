@@ -3,12 +3,17 @@ import Foundation
 public class UserDefaultsService {
     public init() {}
     
-    func get<T>(_ key: UserDefaultsKey) -> T? {
-        UserDefaults.standard.data(forKey: key.rawValue) as? T
+    public func get<T: Decodable>(_ key: UserDefaultsKey) -> T? {
+        guard let value = UserDefaults.standard.data(forKey: key.rawValue) else {
+            return nil
+        }
+        return try! JSONDecoder().decode(T.self, from: value)
     }
     
-    func set<T>(_ key: UserDefaultsKey, value: T) {
-        UserDefaults.standard.setValue(value, forKey: key.rawValue)
+    public func set<T: Encodable>(_ key: UserDefaultsKey, value: T) {
+        let encoded = try! JSONEncoder().encode(value)
+        UserDefaults.standard.set(encoded, forKey: key.rawValue)
+        UserDefaults.standard.synchronize()
     }
 }
 

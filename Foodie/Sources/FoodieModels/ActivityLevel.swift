@@ -1,7 +1,7 @@
 // More information found at:
 // https://www.medicalnewstoday.com/articles/319731#calculating-how-many-calories-are-burned-in-a-day
 
-public enum ActivityLevel: Int, Identifiable, CaseIterable {
+public enum ActivityLevel: Int, Identifiable, CaseIterable, Hashable {
     case barelyActive = 1
     case slightlyActive = 2
     case moderativelyActive = 3

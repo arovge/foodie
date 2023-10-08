@@ -4,14 +4,14 @@ import FoodieModels
 enum Route: Hashable {
     case splash
     case setup
-    case dashboard
+    case dashboard(User)
     case settings
     case foodEditor(Food?)
 }
 
 @Observable
 class Navigator {
-    public var path: NavigationPath = NavigationPath([Route.dashboard])
+    public var path = NavigationPath([Route.splash])
     
     init() {}
     

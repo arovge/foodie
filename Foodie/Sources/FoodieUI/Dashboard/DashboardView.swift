@@ -6,13 +6,13 @@ import FoodieServices
 struct DashboardView: View {
     @Environment(Navigator.self) var navigator: Navigator
     @Environment(\.modelContext) private var modelContext: ModelContext
-    @AppStorage(UserDefaultsKey.height.rawValue) var heightCm: Double = 0
-    @AppStorage(UserDefaultsKey.weight.rawValue) var weightKg: Double = 0
-    @AppStorage(UserDefaultsKey.sex.rawValue) var sex: Int = -1
-    @AppStorage(UserDefaultsKey.age.rawValue) var age: Int = 0
-    @AppStorage(UserDefaultsKey.activityLevel.rawValue) var activityLevel: Int = -1
     @Query private var items: [Food]
     let calorieService = CalorieService()
+    let user: User
+    
+    init(user: User) {
+        self.user = user
+    }
     
     var body: some View {
         Form {
@@ -34,7 +34,7 @@ struct DashboardView: View {
                 Text(fmt(currentDailyCalories))
             }
             
-            NutrientsProgress(food: items)
+            NutrientsProgress(food: items, user: user)
             
             Section("Food") {
                 if items.isEmpty {
@@ -58,7 +58,7 @@ struct DashboardView: View {
             }
         }
         .navigationTitle(today)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
@@ -92,16 +92,7 @@ struct DashboardView: View {
     }
     
     var estimatedDailyCalories: Double? {
-        guard let sex = Sex(rawValue: sex) else { return nil }
-        guard let level = ActivityLevel(rawValue: activityLevel) else { return nil }
-
-        return calorieService.estimateDailyCalories(
-            height: Measurement(value: heightCm, unit: .centimeters),
-            weight: Measurement(value: weightKg, unit: .kilograms),
-            age: age,
-            sex: sex,
-            activityLevel: level
-        )
+        calorieService.estimateDailyCalories(for: user)
     }
     
     func delete(at offsets: IndexSet) {
