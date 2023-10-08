@@ -9,6 +9,5 @@ struct FoodieApp: App {
         WindowGroup {
             RootView()
         }
-        .modelContainer(for: Food.self)
     }
 }

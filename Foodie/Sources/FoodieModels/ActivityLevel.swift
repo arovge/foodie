@@ -1,14 +1,33 @@
 // More information found at:
 // https://www.medicalnewstoday.com/articles/319731#calculating-how-many-calories-are-burned-in-a-day
 
-public enum ActivityLevel {
-    case barelyActive
-    case slightlyActive
-    case moderativelyActive
-    case veryActive
-    case extraActive
+public enum ActivityLevel: Int, Identifiable, CaseIterable, Hashable {
+    case barelyActive = 1
+    case slightlyActive = 2
+    case moderativelyActive = 3
+    case veryActive = 4
+    case extraActive = 5
     
-    var description: String {
+    public var id: Int {
+        rawValue
+    }
+    
+    public var label: String {
+        switch self {
+        case .barelyActive:
+            "Barely active"
+        case .slightlyActive:
+            "Slightly active"
+        case .moderativelyActive:
+            "Moderatively active"
+        case .veryActive:
+            "Very active"
+        case .extraActive:
+            "Extra active"
+        }
+    }
+    
+    public var description: String {
         switch self {
         case .barelyActive:
             "A person who does little to no exercise"

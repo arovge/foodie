@@ -1,21 +1,24 @@
 import SwiftUI
 import SwiftData
 import FoodieModels
+import FoodieServices
 
-
+@MainActor
 public struct RootView: View {
     @State var navigator = Navigator()
+    @State var viewModel = RootViewModel()
     
     public init() {}
     
     public var body: some View {
-        @Bindable var nav = navigator
-        NavigationStack(path: $nav.path) {
-            ProgressView()
+        NavigationStack(path: $navigator.path) {
+            EmptyView()
                 .navigationDestination(for: Route.self) { route in
                     switch route {
-                    case .dashboard:
-                        DashboardView()
+                    case .splash:
+                        ProgressView()
+                    case let .dashboard(user):
+                        DashboardView(user: user)
                             .navigationBarBackButtonHidden()
                             .environment(navigator)
                     case .settings:
@@ -23,14 +26,17 @@ public struct RootView: View {
                             .environment(navigator)
                     case .setup:
                         SetupView()
+                            .navigationBarBackButtonHidden()
                             .environment(navigator)
-                    case .splash:
-                        ProgressView()
-                    case .foodEditor:
-                        FoodEditor()
+                    case .foodEditor(let food):
+                        FoodEditor(existingFood: food)
                             .environment(navigator)
                     }
                 }
+                .onAppear {
+                    viewModel.handleAppear(navigator)
+                }
         }
+        .modelContainer(for: Food.self)
     }
 }
