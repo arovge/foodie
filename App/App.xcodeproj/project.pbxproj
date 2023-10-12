@@ -32,14 +32,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		653353022AD770A800E6ED3C /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		653353032AD770A800E6ED3C /* AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		659ABFF02A4BD73D00A0837B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		659ABFF62A4BD73D00A0837B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		659ABFF82A4BD73D00A0837B /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		659ABFFC2A4BD73D00A0837B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		659AC00F2A4BD73D00A0837B /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		659AC0112A4BD73D00A0837B /* UILaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILaunchTests.swift; sourceTree = "<group>"; };
-		65CCA5532AD76D480003DF94 /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = AppTests.xctest; path = /Users/ajr/code/Foodie/App/build/Debug/AppTests.xctest; sourceTree = "<absolute>"; };
-		65CCA5542AD76D480003DF94 /* AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = AppUITests.xctest; path = /Users/ajr/code/Foodie/App/build/Debug/AppUITests.xctest; sourceTree = "<absolute>"; };
 		65CCA5592AD76E710003DF94 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,11 +69,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		653353042AD770EE00E6ED3C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		659ABFE42A4BD73D00A0837B = {
 			isa = PBXGroup;
 			children = (
 				65CCA5552AD76E2C0003DF94 /* iOS */,
 				65CCA5592AD76E710003DF94 /* App.app */,
+				653353022AD770A800E6ED3C /* AppTests.xctest */,
+				653353032AD770A800E6ED3C /* AppUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +98,7 @@
 		65CCA5552AD76E2C0003DF94 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				653353042AD770EE00E6ED3C /* Preview Content */,
 				659ABFF02A4BD73D00A0837B /* App.swift */,
 				659ABFF62A4BD73D00A0837B /* Assets.xcassets */,
 				659ABFF82A4BD73D00A0837B /* iOS.entitlements */,
@@ -136,7 +146,7 @@
 			);
 			name = AppTests;
 			productName = foodieTests;
-			productReference = 65CCA5532AD76D480003DF94 /* AppTests.xctest */;
+			productReference = 653353022AD770A800E6ED3C /* AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		659AC00A2A4BD73D00A0837B /* AppUITests */ = {
@@ -154,7 +164,7 @@
 			);
 			name = AppUITests;
 			productName = foodieUITests;
-			productReference = 65CCA5542AD76D480003DF94 /* AppUITests.xctest */;
+			productReference = 653353032AD770A800E6ED3C /* AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -390,6 +400,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iOS/iOS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iOS/Preview Content\"";
@@ -429,6 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iOS/iOS.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iOS/Preview Content\"";
